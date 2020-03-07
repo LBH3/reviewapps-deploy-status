@@ -190,6 +190,7 @@ def main() -> None:
     with open(os.environ["GITHUB_EVENT_PATH"]) as j:
         logger.info(f"GITHUB_EVENT_PATH: {j}")
         pull_request_data = json.load(j)
+        logger.info(f"pull_request_data: {json.dumps(pull_request_data)}")
 
     # Fetch the GitHub status URL
     github_deployment_status_url = _get_github_deployment_status_url(
