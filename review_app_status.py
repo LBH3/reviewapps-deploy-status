@@ -195,7 +195,7 @@ def main() -> None:
     # Fetch the GitHub status URL
     github_deployment_status_url = _get_github_deployment_status_url(
         deployments_url=pull_request_data["repository"]["deployments_url"],
-        commit_sha=pull_request_data["pull_request"]["head"]["sha"],
+        commit_sha=pull_request_data["head_commit"]["id"],
         timeout=args.deployments_timeout,
         interval=args.interval,
     )
