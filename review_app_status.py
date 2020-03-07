@@ -10,7 +10,7 @@ from enum import Enum, auto
 
 import requests
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger("review_app_status")
 
 
@@ -187,8 +187,9 @@ def main() -> None:
 
     logger.info(f"Statuses being accepted: {args.accepted_responses}")
 
-    with open(os.environ["GITHUB_EVENT_PATH"]) as f:
-        pull_request_data = json.load(f)
+    with open(os.environ["GITHUB_EVENT_PATH"]) as j:
+        logger.info(f"GITHUB_EVENT_PATH: {j}")
+        pull_request_data = json.load(j)
 
     # Fetch the GitHub status URL
     github_deployment_status_url = _get_github_deployment_status_url(
